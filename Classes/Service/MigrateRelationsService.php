@@ -148,7 +148,8 @@ class MigrateRelationsService extends AbstractService {
 								'sys_file_reference',
 								'uid = ' . $newRelationsRecordUid,
 								array(
-									'title' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
+									// caption in title WTF?
+									'description' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
 								)
 							);
 						}
