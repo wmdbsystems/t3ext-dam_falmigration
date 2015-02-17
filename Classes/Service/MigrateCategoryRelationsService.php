@@ -106,7 +106,15 @@ class MigrateCategoryRelationsService extends AbstractService {
 		if ($rows === NULL) {
 			throw new \Exception('SQL-Error in getCategoryRelationsWhereSysCategoryExists()', 1382968725);
 		} elseif (count($rows) === 0) {
-			throw new \Exception('There are no migrated dam categories in sys_category. Please start to migrate DAM Cat -> sys_category first. Or, maybe there are no dam categories to migrate', 1382968775);
+			$countRelations = $this->database->exec_SELECTcountRows(
+				'c.uid', 'tx_dam as d
+					INNER JOIN tx_dam_mm_cat as mm on d.uid = mm.uid_local
+					INNER JOIN tx_dam_cat as c on mm.uid_foreign = c.uid',
+					'd.deleted = 0 and c.deleted=0'
+				);
+			if($countRelations > 0){
+				throw new \Exception('There are no migrated dam categories in sys_category. Please start to migrate DAM Cat -> sys_category first.', 1382968775);
+			}
 		} else {
 			return $rows;
 		}
