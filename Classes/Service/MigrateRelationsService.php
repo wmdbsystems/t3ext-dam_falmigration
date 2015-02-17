@@ -129,7 +129,7 @@ class MigrateRelationsService extends AbstractService {
 								'uid = ' . $newRelationsRecordUid,
 								array(
 									'link' => $imageLinks[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1],
-									'title' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
+									'description' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
 
 								)
 							);
@@ -148,7 +148,7 @@ class MigrateRelationsService extends AbstractService {
 								'sys_file_reference',
 								'uid = ' . $newRelationsRecordUid,
 								array(
-									'title' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
+									'description' => $imageCaptions[$numberImportedRelationsByContentElement[$insertData['uid_foreign']] - 1]
 								)
 							);
 						}
