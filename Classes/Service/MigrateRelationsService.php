@@ -167,6 +167,20 @@ class MigrateRelationsService extends AbstractService {
 		return $this->getResultMessage();
 	}
 
+    protected function doesFileReferenceExist(array $fileReference) {
+        return (bool)$this->database->exec_SELECTcountRows(
+            'uid',
+            'sys_file_reference',
+            'uid_local = ' . $fileReference['sys_file_uid'] .
+            ' AND uid_foreign = ' . $fileReference['uid_foreign'] .
+            ' AND tablenames = "' . $fileReference['tablenames'] . '"' .
+            ' AND fieldname = "' . $this->getColForFieldName($fileReference) . '"' .
+            ' AND table_local = "sys_file"' .
+            ' AND deleted = 0'
+        );
+    }
+
+
 	/**
 	 * get pid of foreign record
 	 * this is needed by sys_file_reference records
