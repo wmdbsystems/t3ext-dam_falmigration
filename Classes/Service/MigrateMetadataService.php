@@ -72,6 +72,7 @@ class MigrateMetadataService extends AbstractService {
 		'loc_country' => 'location_country',
 		'pages' => 'pages',
 		'publisher' => 'publisher',
+		'copyright' => 'copyright',
 	);
 
 	/**
