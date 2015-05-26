@@ -240,7 +240,7 @@ class MigrateRelationsService extends AbstractService {
 	 * @return string
 	 */
 	protected function getColForFieldName(array $damRelation) {
-		if ($damRelation['tablenames'] == 'tt_content' && $damRelation['ident'] == 'tx_damttcontent_files') {
+		if ($damRelation['tablenames'] == 'tt_content' && ($damRelation['ident'] == 'tx_damttcontent_files' || $damRelation['ident'] == 'tx_dam_images' || $damRelation['ident'] == 'tx_dam_files')) {
 			$fieldName = 'image';
 		} elseif ($damRelation['tablenames'] == 'tt_content' && ($damRelation['ident'] == 'tx_damttcontent_files_upload' || $damRelation['ident'] == 'tx_damfilelinks_filelinks')) {
 			$fieldName = 'media';
