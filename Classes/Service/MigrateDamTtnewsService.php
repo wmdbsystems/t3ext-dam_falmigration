@@ -58,7 +58,7 @@ class MigrateDamTtnewsService extends AbstractService {
         $articlesWithMediaResult = $this->getRecordsWithDamConnections('tt_news', 'tx_damnews_dam_media');
         $this->migrateDamReferencesToFalReferences($articlesWithMediaResult, 'tt_news', 'media', $this->fieldMapping);
 
-        $articlesWithvditeaserResult = $this->getRecordsWithDamConnections('tt_news', 'tx_wmdbvditeaser_damimage');
+        $articlesWithvditeaserResult = $this->getRecordsWithDamConnections('tt_news', 'smnrassets');
         $this->migrateDamReferencesToFalReferences($articlesWithvditeaserResult, 'tt_news', 'image');
 
         $this->updateFalFieldsFromTtNews();
